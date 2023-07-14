@@ -19,8 +19,14 @@ def submit():
     email = request.form["email"]
     uniform = request.form["uniform"]
     patches = request.form["patches"]
+    estimated_cost = patches * 4 # We have to do the multiplication in the python file, not the html
 
-    return render_template("submitted_index.html")
+    # For the html to know what the variables are, we have to pass them in as arguments when rendering
+    # Remember that html does no logic or programming itself, so any logic like what variables are (or math)
+    # We need to do in the python file and then render it to the html file
+    # So where it says 'pname=pname' for example it is saying:
+    # pname(from html file) = pname(from python file) -> This will then go in, find the spot asking to be replaced with pname var and replace it with the value
+    return render_template("submitted_index.html", pname=pname, patches=patches, estimated_cost=estimated_cost)
 
 
 # This is a thing for python that makes it so that if someone calls on this file as a library
