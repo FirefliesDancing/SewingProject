@@ -9,9 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "i dont really know"
-
-app.run(host="0.0.0.0", port=80)
+    return render_template("index.html")
 
 @app.route('/submit', methods=["POST"])
 def submit():
@@ -25,12 +23,7 @@ def submit():
     attendance = request.form["attendance"]
 
 
-
-# input("Parent Name: ")
-# input("Student(s) name(s)")
-# input("Prefered email adress: ")
-# input("Number of uniforms: ")
-# input("Number of patches: ")
-# input("Which class does your child attend? ")
-# input("What days do your students go to class? ")
-
+# This is a thing for python that makes it so that if someone calls on this file as a library
+# then they can get the functions without actually running the program (if you have questions text me)
+if __name__ == "__main__":
+    app.run(debug=True)
